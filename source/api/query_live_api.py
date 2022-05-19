@@ -10,24 +10,31 @@ import json
 # import pprint
 
 person = {
-        "age": 46,
-        "workclass": 'Private',
-        "fnlwgt": 364548,
-        "education": 'Bachelors',
-        "education_num": 13,
-        "marital_status": 'Divorced',
-        "occupation": 'Sales',
-        "relationship": 'Not-in-family',
-        "race": 'White',
-        "sex": 'Male',
-        "capital_gain": 8614,
-        "capital_loss": 0,
-        "hours_per_week": 40,
-        "native_country": 'United-States'
+        "customerID" : 0000AAAAAA,
+        "gender"  : Male,
+        "SeniorCitizen" :  0,
+        "Partner" : Yes,
+        "Dependents" : No,
+        "tenure" : 10,
+        "PhoneService" :  Yes,
+        "MultipleLines" : No,
+        "InternetService" : DSL,
+        "OnlineSecurity" : No,
+        "OnlineBackup" : No,
+        "DeviceProtection" : No,
+        "TechSupport" : No,
+        "StreamingTV" : No,
+        "StreamingMovies" : No,
+        "Contract" : One year,
+        "PaperlessBilling" : Yes,
+        "PaymentMethod" :  Mailed check,
+        "MonthlyCharges" : 29.30,
+        "TotalCharges" : 29.30,
+        "Churn" : No
     }
 
-#url = "http://127.0.0.1:8000"
-url = "https://teste-am.herokuapp.com"
+url = "http://127.0.0.1:8000"
+#url = "https://teste-am.herokuapp.com"
 response = requests.post(f"{url}/predict",
                          json=person)
 

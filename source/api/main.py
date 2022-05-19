@@ -19,10 +19,10 @@ setattr(sys.modules["__main__"], "CategoricalTransformer", CategoricalTransforme
 setattr(sys.modules["__main__"], "NumericalTransformer", NumericalTransformer)
 
 # name of the model artifact
-artifact_model_name = "decision_tree/model_export:latest"
+artifact_model_name = "projeto_1_AM/model_export:latest"
 
 # initiate the wandb project
-run = wandb.init(project="decision_tree",job_type="api")
+run = wandb.init(project="projeto_1_AM",job_type="api")
 
 # create the api
 app = FastAPI()
