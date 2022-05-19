@@ -1,8 +1,8 @@
 """
 Creator: Ivanovitch Silva
 Date: 26 April. 2022
-Script that POSTS to the API using the requests 
-module and returns both the result of 
+Script that POSTS to the API using the requests
+module and returns both the result of
 model inference and the status code
 """
 import requests
@@ -18,7 +18,7 @@ person = {
         "tenure" : 10,
         "PhoneService" :  Yes,
         "MultipleLines" : No,
-        "InternetService" : DSL,
+        "InternetService" : No,
         "OnlineSecurity" : No,
         "OnlineBackup" : No,
         "DeviceProtection" : No,
