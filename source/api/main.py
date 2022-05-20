@@ -11,14 +11,17 @@ import joblib
 import os
 import wandb
 import sys
+#classes que criamos no pipeline
 from source.api.pipeline import FeatureSelector, CategoricalTransformer, NumericalTransformer
 
 # global variables
+#todas as classes que criamos são modulos
 setattr(sys.modules["__main__"], "FeatureSelector", FeatureSelector)
 setattr(sys.modules["__main__"], "CategoricalTransformer", CategoricalTransformer)
 setattr(sys.modules["__main__"], "NumericalTransformer", NumericalTransformer)
 
-# name of the model artifact
+# name of the model artifact wandb
+#lembrar de fazer login no terminal
 artifact_model_name = "projeto_1_AM/model_export:latest"
 
 # initiate the wandb project
@@ -49,18 +52,19 @@ class Person(BaseModel):
     PaperlessBilling: str
     PaymentMethod: str
     MonthlyCharges: float
-    TotalCharges: str
+    TotalCharges: str #acho que essa é float tbm
     Churn: str
 
+    #adaptando o template do fastapi para nosso problema
     class Config:
         schema_extra = {
             "example": {
                 "customerID" : '0000-AAAAA',
                 "gender"  : 'Male',
-                "SeniorCitizen" :  '0',
+                "SeniorCitizen" :  '0', #porque colocou str?
                 "Partner" : 'Yes',
                 "Dependents" : 'No',
-                "tenure" : '10',
+                "tenure" : '10', #porque colocou str?
                 "PhoneService" :  'Yes',
                 "MultipleLines" : 'No',
                 "InternetService" : 'DSL',
@@ -73,7 +77,7 @@ class Person(BaseModel):
                 "Contract" : 'One year',
                 "PaperlessBilling" : 'Yes',
                 "PaymentMethod" :  'Mailed check',
-                "MonthlyCharges" : '29.30',
+                "MonthlyCharges" : '29.30',#porque colocou str?
                 "TotalCharges" : '29.30',
                 "Churn" : 'No'
             }
@@ -87,7 +91,7 @@ async def root():
     """<p><span style="font-size:20px">In this project, we will apply the skills """\
         """acquired in the Deploying a Scalable ML Pipeline in Production course to develop """\
         """a classification model on publicly available"""\
-        """<a href="http://archive.ics.uci.edu/ml/datasets/Adult"> Census Bureau data</a>.</span></p>"""
+        """<a href="https://www.kaggle.com/code/bhartiprasad17/customer-churn-prediction"> Kaggle </a>.</span></p>"""
 
 # run the model inference and use a Person data structure via POST to the API.
 @app.post("/predict")
@@ -105,5 +109,5 @@ async def get_inference(person: Person):
 
     # Predict test data
     predict = pipe.predict(df)
-
+#tayna aqui: não entendi porque esse <=0.5
     return "No Churn" if predict[0] <= 0.5 else "churn"
