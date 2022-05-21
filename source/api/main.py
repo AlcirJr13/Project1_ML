@@ -52,19 +52,18 @@ class Person(BaseModel):
     PaperlessBilling: str
     PaymentMethod: str
     MonthlyCharges: float
-    TotalCharges: str #acho que essa é float tbm
-    Churn: str
-
+    TotalCharges: float
+    
     #adaptando o template do fastapi para nosso problema
     class Config:
         schema_extra = {
             "example": {
                 "customerID" : '0000-AAAAA',
                 "gender"  : 'Male',
-                "SeniorCitizen" :  '0', #porque colocou str?
+                "SeniorCitizen" :  0, 
                 "Partner" : 'Yes',
                 "Dependents" : 'No',
-                "tenure" : '10', #porque colocou str?
+                "tenure" : 10, 
                 "PhoneService" :  'Yes',
                 "MultipleLines" : 'No',
                 "InternetService" : 'DSL',
@@ -77,9 +76,8 @@ class Person(BaseModel):
                 "Contract" : 'One year',
                 "PaperlessBilling" : 'Yes',
                 "PaymentMethod" :  'Mailed check',
-                "MonthlyCharges" : '29.30',#porque colocou str?
-                "TotalCharges" : '29.30',
-                "Churn" : 'No'
+                "MonthlyCharges" : 29.30,
+                "TotalCharges" : 29.30
             }
         }
 
@@ -109,5 +107,5 @@ async def get_inference(person: Person):
 
     # Predict test data
     predict = pipe.predict(df)
-#tayna aqui: não entendi porque esse <=0.5
-    return "No Churn" if predict[0] <= 0.5 else "churn"
+
+    return "No Churn" if predict[0] <= 0.5 else "Churn"

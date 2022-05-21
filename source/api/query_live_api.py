@@ -10,13 +10,12 @@ import json
 # import pprint
 
 person = {
-#mudei todas pra str porque no nosso exemplo ta tudo str no main
         "customerID" : '0000-AAAAAA',
         "gender"  : 'Male',
-        "SeniorCitizen" :  '0',
+        "SeniorCitizen" :  0,
         "Partner" : 'Yes',
         "Dependents" : 'No',
-        "tenure" : '10',
+        "tenure" : 10,
         "PhoneService" :  'Yes',
         "MultipleLines" : 'No',
         "InternetService" : 'DSL',
@@ -29,9 +28,8 @@ person = {
         "Contract" : 'One year',
         "PaperlessBilling" : 'Yes',
         "PaymentMethod" :  'Mailed check',
-        "MonthlyCharges" : '29.30',
-        "TotalCharges" : '29.30',
-        "Churn" : 'No'
+        "MonthlyCharges" : 29.30,
+        "TotalCharges" : 29.30
     }
 
 url = "http://127.0.0.1:8000"
@@ -57,8 +55,7 @@ print(f"Person: \n customerID: {person['customerID']}\n gender: {person['gender'
       f" PaperlessBilling: {person['PaperlessBilling']}\n"\
       f" PaymentMethod: {person['PaymentMethod']}\n"\
       f" MonthlyCharges: {person['MonthlyCharges']}\n"\
-      f" TotalCharges: {person['TotalCharges']}\n"\
-      f" Churn: {person['Churn']}\n"
+      f" TotalCharges: {person['TotalCharges']}\n"
      )
 print(f"Result of model inference: {response.json()}")
 print(f"Status code: {response.status_code}")

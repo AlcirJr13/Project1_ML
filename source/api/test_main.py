@@ -18,53 +18,65 @@ def test_root():
     assert r.status_code == 200
 
 # a unit test that tests the status code and response 
-# for an instance with a low income
-def test_get_inference_low_income():
+# for an instance with no churn
+def test_get_inference_no_churn():
 
     person = {
-        "age": 72,
-        "workclass": 'Self-emp-inc',
-        "fnlwgt": 473748,
-        "education": 'Some-college',
-        "education_num": 10,
-        "marital_status": 'Married-civ-spouse',
-        "occupation": 'Exec-managerial',
-        "relationship": 'Husband',
-        "race": 'White',
-        "sex": 'Male',
-        "capital_gain": 0,
-        "capital_loss": 0,
-        "hours_per_week": 25,
-        "native_country": 'United-States'
+        "customerID" : '0000-AAAAAA',
+        "gender"  : 'Female',
+        "SeniorCitizen" :  0,
+        "Partner" : 'Yes',
+        "Dependents" : 'No',
+        "tenure" : 1,
+        "PhoneService" :  'No',
+        "MultipleLines" : 'No phone service',
+        "InternetService" : 'DSL',
+        "OnlineSecurity" : 'No',
+        "OnlineBackup" : 'Yes',
+        "DeviceProtection" : 'No',
+        "TechSupport" : 'No',
+        "StreamingTV" : 'No',
+        "StreamingMovies" : 'No',
+        "Contract" : 'Month-to-month',
+        "PaperlessBilling" : 'Yes',
+        "PaymentMethod" :  'Electronic check',
+        "MonthlyCharges" : 29.85,
+        "TotalCharges" : 29.85
     }
 
     r = client.post("/predict", json=person)
     # print(r.json())
     assert r.status_code == 200
-    assert r.json() == "low income <=50K"
+    assert r.json() == "No Churn"
 
 # a unit test that tests the status code and response 
-# for an instance with a high income
-def test_get_inference_high_income():
+# for an instance with churn
+def test_get_inference_churn():
 
     person = {
-        "age": 46,
-        "workclass": 'Private',
-        "fnlwgt": 364548,
-        "education": 'Bachelors',
-        "education_num": 13,
-        "marital_status": 'Divorced',
-        "occupation": 'Sales',
-        "relationship": 'Not-in-family',
-        "race": 'White',
-        "sex": 'Male',
-        "capital_gain": 8614,
-        "capital_loss": 0,
-        "hours_per_week": 40,
-        "native_country": 'United-States'
+        "customerID" : '0000-AAAAAA',
+        "gender"  : 'Male',
+        "SeniorCitizen" :  1,
+        "Partner" : 'No',
+        "Dependents" : 'No',
+        "tenure" : 1,
+        "PhoneService" :  'No',
+        "MultipleLines" : 'No phone service',
+        "InternetService" : 'DSL',
+        "OnlineSecurity" : 'No',
+        "OnlineBackup" : 'No',
+        "DeviceProtection" : 'Yes',
+        "TechSupport" : 'No',
+        "StreamingTV" : 'No',
+        "StreamingMovies" : 'Yes',
+        "Contract" : 'Month-to-month',
+        "PaperlessBilling" : 'No',
+        "PaymentMethod" :  'Mailed check',
+        "MonthlyCharges" : 20.15,
+        "TotalCharges" : 20.15
     }
 
     r = client.post("/predict", json=person)
     print(r.json())
     assert r.status_code == 200
-    assert r.json() == "high income >50K"
+    assert r.json() == "Churn"
