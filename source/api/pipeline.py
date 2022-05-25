@@ -9,7 +9,7 @@ import pandas as pd
 
 # Select a Feature
 class FeatureSelector(BaseEstimator, TransformerMixin):
-    # Class Constructor
+    # Construtor de classe
     def __init__(self, feature_names):
         self.feature_names = feature_names
 
@@ -24,7 +24,7 @@ class FeatureSelector(BaseEstimator, TransformerMixin):
 # Handling categorical features
 class CategoricalTransformer(BaseEstimator, TransformerMixin):
     # Class constructor method that takes one boolean as its argument
-    def __init__(self, new_features=False, colnames=None):
+    def __init__(self, new_features=True, colnames=None):
         self.new_features = new_features
         self.colnames = colnames
 
@@ -46,37 +46,53 @@ class CategoricalTransformer(BaseEstimator, TransformerMixin):
         # How can I identify what needs to be modified? EDA!!!!
         if self.new_features:
 
-            # minimize the cardinality of native_country feature
-            # check cardinality using df.native_country.unique()
-            df.loc[df['native_country'] != 'United-States','native_country'] = 'non_usa'
-
-            # replace ? with Unknown
-            edit_cols = ['native_country', 'occupation', 'workclass']
-            for col in edit_cols:
-                df.loc[df[col] == '?', col] = 'unknown'
-
-            # decrease the cardinality of education feature
-            hs_grad = ['HS-grad', '11th', '10th', '9th', '12th']
-            elementary = ['1st-4th', '5th-6th', '7th-8th']
+            multipleLines = ['No phone service', 'No']
             # replace
-            df['education'].replace(to_replace=hs_grad,value='HS-grad',inplace=True)
-            df['education'].replace(to_replace=elementary,value='elementary_school',inplace=True)
+            df['MultipleLines'].replace(to_replace=multipleLines,value='No',inplace=True)
 
-            # adjust marital_status feature
-            married = ['Married-spouse-absent','Married-civ-spouse','Married-AF-spouse']
-            separated = ['Separated', 'Divorced']
 
+            internetservice = ['Fiber optic', 'DSL']
             # replace
-            df['marital_status'].replace(to_replace=married, value='Married', inplace=True)
-            df['marital_status'].replace(to_replace=separated, value='Separated', inplace=True)
+            df['InternetService'].replace(to_replace=internetservice,value='Yes',inplace=True)
 
-            # adjust workclass feature
-            self_employed = ['Self-emp-not-inc', 'Self-emp-inc']
-            govt_employees = ['Local-gov', 'State-gov', 'Federal-gov']
 
-            # replace elements in list.
-            df['workclass'].replace(to_replace=self_employed,value='Self_employed',inplace=True)
-            df['workclass'].replace(to_replace=govt_employees,value='Govt_employees',inplace=True)
+            onlinesecurity = ['No internet service', 'No']
+            # replace
+            df['OnlineSecurity'].replace(to_replace=onlinesecurity,value='No',inplace=True)
+
+
+            onlinebackup = ['No internet service', 'No']
+            # replace
+            df['OnlineBackup'].replace(to_replace=onlinebackup,value='No',inplace=True)
+
+
+            deviceprotection = ['No internet service', 'No']
+            # replace
+            df['DeviceProtection'].replace(to_replace=deviceprotection,value='No',inplace=True)
+
+
+            techsupport = ['No internet service', 'No']
+            # replace
+            df['TechSupport'].replace(to_replace=techsupport,value='No',inplace=True)
+
+
+            streamingTV = ['No internet service', 'No']
+            # replace
+            df['StreamingTV'].replace(to_replace=streamingTV,value='No',inplace=True)
+
+
+            streamingmovies = ['No internet service', 'No']
+            # replace
+            df['StreamingMovies'].replace(to_replace=streamingmovies,value='No',inplace=True)
+
+
+
+            # decrease the cardinality of paymentmethod feature
+            other_types = ['Bank transfer (automatic)','Credit card (automatic)']
+            # replace
+            df['PaymentMethod'].replace(to_replace=other_types,value='Other',inplace=True)
+
+
 
         # update column names
         self.colnames = df.columns
