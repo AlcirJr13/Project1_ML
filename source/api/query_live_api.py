@@ -28,12 +28,12 @@ person = {
         "Contract" : 'One year',
         "PaperlessBilling" : 'Yes',
         "PaymentMethod" :  'Mailed check',
-        "MonthlyCharges" : 29.30,
-        "TotalCharges" : 29.30
+        "MonthlyCharges" : 29.85,
+        "TotalCharges" : 29.85
     }
 
-url = "http://127.0.0.1:8000"
-#url = "https://teste-am.herokuapp.com"
+#url = "http://127.0.0.1:8000"
+url = "https://https://project1-ml-ppgeec.herokuapp.com"
 response = requests.post(f"{url}/predict",
                          json=person)
 

@@ -1,0 +1,25 @@
+{
+    "os": "Windows-10-10.0.19044-SP0",
+    "python": "3.8.13",
+    "heartbeatAt": "2022-05-26T23:53:14.246665",
+    "startedAt": "2022-05-26T23:53:11.338212",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [
+        "source.api.main:app",
+        "--reload"
+    ],
+    "state": "running",
+    "program": "C:\\Users\\tayna\\anaconda3\\envs\\Project1_ML\\Scripts\\uvicorn-script.py",
+    "codePath": "..\\anaconda3\\envs\\Project1_ML\\Scripts\\uvicorn-script.py",
+    "git": {
+        "remote": "https://github.com/AlcirJr13/Project1_ML.git",
+        "commit": "bfecc8c0c2bb6d3a5d4520bfe31e83dcef115ee2"
+    },
+    "email": "arruda.camara.113@ufrn.edu.br",
+    "root": "C:/Users/tayna/Project1_ML",
+    "host": "DESKTOP-RAOBTTB",
+    "username": "tayna",
+    "executable": "C:\\Users\\tayna\\anaconda3\\envs\\Project1_ML\\python.exe"
+}
