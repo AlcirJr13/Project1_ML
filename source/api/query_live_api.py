@@ -33,7 +33,8 @@ person = {
     }
 
 #url = "http://127.0.0.1:8000"
-url = "https://project1-ml-ppgeec.herokuapp.com/"
+#url = "https://teste-am.herokuapp.com"
+url = "https://project1-ml-ppgeec1.herokuapp.com"
 response = requests.post(f"{url}/predict",
                          json=person)
 
@@ -58,5 +59,5 @@ print(f"Person: \n customerID: {person['customerID']}\n gender: {person['gender'
       f" MonthlyCharges: {person['MonthlyCharges']}\n"\
       f" TotalCharges: {person['TotalCharges']}\n"
      )
-print(f"Result of model inference: {response.json()}")
+#print(f"Result of model inference: {response.json()}")
 print(f"Status code: {response.status_code}")
