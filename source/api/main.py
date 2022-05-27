@@ -31,7 +31,7 @@ run = wandb.init(project="projeto_1_AM",job_type="api")
 app = FastAPI()
 
 # declare request example data using pydantic
-# a person in our dataset has the following attributes
+# a person in our dataset has the following attributes aa
 class Person(BaseModel):
     customerID: str
     gender: str
