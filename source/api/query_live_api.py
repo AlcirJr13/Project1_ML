@@ -33,7 +33,7 @@ person = {
     }
 
 #url = "http://127.0.0.1:8000"
-url = "https://https://project1-ml-ppgeec1.herokuapp.com"
+url = "https://project1-ml-ppgeec1.herokuapp.com"
 response = requests.post(f"{url}/predict",
                          json=person)
 
