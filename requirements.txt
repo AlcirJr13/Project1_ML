@@ -16,7 +16,6 @@ jupyterlab
 jupyter
 ipywidgets
 jupyterlab_widgets
-git
 pydantic
 yaml
 pip
