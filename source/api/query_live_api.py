@@ -33,9 +33,11 @@ person = {
     }
 
 #url = "http://127.0.0.1:8000"
-url = "https://project1-ml-ppgeec1.herokuapp.com"
+url = "https://teste-am.herokuapp.com"
 response = requests.post(f"{url}/predict",
                          json=person)
+
+print("PASSOU")
 
 print(f"Request: {url}/predict")
 print(f"Person: \n customerID: {person['customerID']}\n gender: {person['gender']}\n"\
